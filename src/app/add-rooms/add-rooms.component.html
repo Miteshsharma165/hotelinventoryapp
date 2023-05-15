@@ -1,0 +1,66 @@
+<div style="position: relative; top: 60px; width: auto;">
+    {{room | json}}
+   <br> {{form.valid | json}}
+   <br> {{form.invalid | json}}
+   <br> {{form.dirty | json}}
+   <br> {{form.pristine | json}} <!--true if no input is touched    -->
+    <form   #form="ngForm" style="min-width: 150px; max-width: 500px;
+    width: 100%;" (ngSubmit)="addRoom(form)">
+    
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label> Room type </mat-label>
+            <input required matInput [(ngModel)]="room.roomType" name="RoomType">
+        </mat-form-field>
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label>Amentites </mat-label>
+            <input #roomAmentities="ngModel" maxlength="6" minlength="5" required matInput type="text" [(ngModel)]="room.amentities" name="Amentites">
+           
+        </mat-form-field>
+        <div *ngIf="roomAmentities?.errors?.['minlength'] ">
+            <p>Min Length is 5</p>
+       </div>
+       
+       
+       
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label> Room Price </mat-label>
+            <input required matInput type="text" [(ngModel)]="room.price" name="Price">
+        </mat-form-field>
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label> Photos </mat-label>
+            <input required matInput type="text" [(ngModel)]="room.photos"name="Photos">
+        </mat-form-field>
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label> ChekIn Time</mat-label>
+            <input matInput [matDatepicker]="checkInDate" [(ngModel)]="room.checkInTime" name="Check In Time">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #checkInDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field  style=" width: 100%;"  appearance="fill">
+            <mat-label>CheckOut Time</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="room.checkoutTime" name="Check Out Time">
+             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <mat-form-field style=" width: 100%;" appearance="fill">
+            <mat-label> Ratings </mat-label>
+            <input matInput type="number" [(ngModel)]="room.rating" name="Ratings">
+        </mat-form-field>
+
+        <button [disabled]="form.invalid" mat-raised-button color="primary" style="width: 100%;"  type="sub
+        " >Primary</button>
+<!--         
+        <mat-form-field  style=" width: 100%;" appearance="fill">
+            <mat-label>Select</mat-label>
+            <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field  style =" width: 100%;" appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field> -->
+
+    </form>
+</div>

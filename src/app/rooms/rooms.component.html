@@ -1,0 +1,20 @@
+<h1>Welcome To {{hotelName}}</h1>
+
+<div [hidden]="hideRooms">
+  No. Of Rooms <div [innerText]="numberOfRooms"></div>
+</div>
+
+<!-- <button btn btn-success (click)="addRoom()">Add Room</button> -->
+<button btn btn-success routerLink="/room-add/add">Add Room</button>
+
+<button (click)="toggle1()">Toggle</button>
+
+  <p> Available Rooms  {{rooms.availableRoms }}</p> 
+<div *ngIf="rooms.availableRoms > 0 ">
+ <hinv-rooms-list  [sub]="sub" [rooms]="$test"  [title]="title"  (selectEvent)="selectEventOccur($event)" ></hinv-rooms-list>
+ 
+</div>
+<button (click)="updateList()">update List</button>
+<ng-component #dynamicComponent>
+
+</ng-component>

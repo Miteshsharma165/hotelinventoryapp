@@ -42,6 +42,8 @@ export class RoomsListComponent implements OnChanges,OnInit{
           this.cdr.detectChanges();
 
          })
+
+         this.sub1.next(this.roomsList1[0]);
    }
 
 

@@ -1,0 +1,42 @@
+{{title}}
+
+
+<table>
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Even odd</th>
+        <th>Room No</th>
+        <th>Room Type</th>
+        <th>Room Amentites</th>
+        <th>Room Price</th>      
+        <th>CheckIn Time</th>
+        <th>CheckOut Time</th>
+        <th>Rating</th>
+        <th>Check To Select</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr  [ngClass]="e ? 'even' : 'odd'" *ngFor="let rooms of roomsList1  ; let e=even; let o=odd; let i=index;">
+        <td>{{i | percent}}</td>
+        <td> {{e ? 'Evene' :'Odd'}}</td>
+        <td>{{rooms.roomNo}}</td>
+        <td>{{rooms.roomType | titlecase}}</td>
+        <td>{{rooms.amentities  | lowercase}}</td>
+        <td>{{rooms.price | currency :'INR'}}</td>
+        <td>{{rooms.checkInTime}}</td>
+        <td>{{rooms.checkoutTime | date : 'dd-MM-yyyy'}}</td>
+        <td>{{rooms.rating}}</td>
+        <td>
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"  (click)="selectEvent(rooms.roomNo)">
+            <label class="form-check-label" for="flexCheckChecked">
+              Checked checkbox
+            </label>
+          </div> -->
+          <button color="primary" [routerLink]="['/rooms',rooms.roomNo]" >Book Rooms Number</button>
+        </td>
+      </tr>
+   
+    </tbody>
